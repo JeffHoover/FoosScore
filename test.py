@@ -1,5 +1,6 @@
 import sys, signal
 import RPi.GPIO as GPIO
+import time
 from Adafruit_LED_Backpack import AlphaNum4
 
 IR_DETECT = 8
@@ -52,5 +53,6 @@ while (1):
           scores = " 0" + str(score_a)
       display.print_str(scores)
       display.write_display()
+      time.sleep(0.4)
       GPIO.output(IR_TRIG,0)
 
