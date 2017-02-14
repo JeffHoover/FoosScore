@@ -1,5 +1,6 @@
 import sys, signal
 import RPi.GPIO as GPIO
+#from Adafruit_LED_Backpack import AlphaNum4
 
 RED = 7
 YELLOW = 3
@@ -26,12 +27,17 @@ def setup_LEDs():
     GPIO.setup(IR_DETECT, GPIO.IN)
     GPIO.setup(IR_TRIG, GPIO.OUT)
 
+#display = AlphaNum4.AlphaNum4()
+#display.begin()
 setup_LEDs()
 GPIO.output(YELLOW,0)
 GPIO.output(GREEN,1)
 GPIO.output(RED,0)
 GPIO.output(GREEN,1)
 GPIO.output(IR_TRIG,0)
+
+#display.print_str("11 9")
+#display.write_display()
 
 signal.signal(signal.SIGINT, handle_ctrl_c)
 
