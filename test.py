@@ -38,12 +38,10 @@ while (1):
     else:
 #      print("LOW")
       score_a += 1
-      if score_a > 99:
-         score_a = 0
-      if score_a < 10:
-          scores = " 0 " + str(score_a)
+      if score_a > 7:
+         scores = "WN 0"
       else:
-          scores = " 0" + str(score_a)
+          scores = " " + str(score_a) + " 0"
       display.print_str(scores)
       display.write_display()
       time.sleep(0.4)
