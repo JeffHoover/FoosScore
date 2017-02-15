@@ -7,7 +7,6 @@ IR_DETECT = 8
 RESET_BUTTON = 36
 score_a = 0
 score_b = 0
-reset_count = 0
 
 def handle_ctrl_c(signal, frame):
     write_score("    ")
@@ -24,12 +23,10 @@ def setup_LEDs():
 
 def reset_game():
     global score_a
-    reset_count = 0
+    global score_b
     score_a = 0
     score_b = 0
-    scores = " 0 0"
-    print("reset")
-    write_score(scores)
+    write_score(" 0 0")
     time.sleep(0.4)
 
 
@@ -47,18 +44,11 @@ reset_game()
 while (1):
     if GPIO.input(RESET_BUTTON):
         reset_game()
-        print ("score = " + str(score_a))
-#        score_a = 0 # Should not have to reset it here if we are already calling reset_game()
-        print("debounce and reset game")
 
     if not GPIO.input(IR_DETECT):
       score_a += 1
-      if reset_count >= 10:
-          reset_game()
           
       if score_a > 7:
-         print (str(reset_count))
-         reset_count += 1
          scores = "WN 0"
       else:
           scores = " " + str(score_a) + " 0"
