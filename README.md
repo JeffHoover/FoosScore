@@ -40,9 +40,12 @@ Code is on github:
 https://github.com/JeffHoover/FoosScore 
 
 Some reference links:  
-http://pi4j.com/pins/model-a-plus.html  
-http://osoyoo.com/2015/03/11/osoyoo-sensor-modules-kit-for-arduino/  
-https://learn.sparkfun.com/tutorials/raspberry-gpio/python-rpigpio-api  
+- http://pi4j.com/pins/model-a-plus.html  
+- http://osoyoo.com/2015/03/11/osoyoo-sensor-modules-kit-for-arduino/  
+- https://learn.sparkfun.com/tutorials/raspberry-gpio/python-rpigpio-api  
+
+GPIO (especially pull-ups and pull-downs):  
+http://makezine.com/projects/tutorial-raspberry-pi-gpio-pins-and-python/ 
 
 I have a display unit like this that can display 00 00 to 99 99 (or most any combination of 4 alphanum characters):  
 https://learn.adafruit.com/adafruit-led-backpack/0-54-alphanumeric
