@@ -5,13 +5,16 @@ from Adafruit_LED_Backpack import AlphaNum4
 
 IR_DETECT = 8
 RESET_BUTTON = 36
+score_a = 0
+score_b = 0
+reset_count = 0
 
 def handle_ctrl_c(signal, frame):
-    clear_score()
+    write_score("    ")
     sys.exit(130) # 130 is standard exit code for ctrl-c
 
-def clear_score():
-    display.print_str("    ")
+def write_score(str):
+    display.print_str(str)
     display.write_display()
 
 def setup_LEDs():
@@ -19,36 +22,39 @@ def setup_LEDs():
     GPIO.setwarnings(False)
     GPIO.setup(IR_DETECT, GPIO.IN)
 
+def reset_game():
+    global score_a
+    reset_count = 0
+    score_a = 0
+    score_b = 0
+    scores = " 0 0"
+    print("reset")
+    write_score(scores)
+    time.sleep(0.4)
+
+
+# BEGIN MAIN
+
 display = AlphaNum4.AlphaNum4()
 display.begin()
 setup_LEDs()
 
-GPIO.setup(RESET_BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-display.print_str(" 0 0")
-display.write_display()
-
-score_a = 0
-score_b = 0
-
 signal.signal(signal.SIGINT, handle_ctrl_c)
+GPIO.setup(RESET_BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-reset_count = 0
-scores = " 0 0"
+reset_game()
+
 while (1):
     if GPIO.input(RESET_BUTTON):
+        reset_game()
+        print ("score = " + str(score_a))
+#        score_a = 0 # Should not have to reset it here if we are already calling reset_game()
         print("debounce and reset game")
 
-    if GPIO.input(IR_DETECT):
-#      print("HIGH")
-       b = 0;
-    else:
-#      print("LOW")
+    if not GPIO.input(IR_DETECT):
       score_a += 1
       if reset_count >= 10:
-          reset_count = 0
-          score_a = 0
-          score_b = 0
-          scores = " 0 0"
+          reset_game()
           
       if score_a > 7:
          print (str(reset_count))
