@@ -30,6 +30,7 @@ score_b = 0
 
 signal.signal(signal.SIGINT, handle_ctrl_c)
 
+reset_count = 0
 scores = " 0 0"
 while (1):
     if GPIO.input(IR_DETECT):
@@ -38,10 +39,19 @@ while (1):
     else:
 #      print("LOW")
       score_a += 1
+      if reset_count >= 10:
+          reset_count = 0
+          score_a = 0
+          score_b = 0
+          scores = " 0 0"
+          
       if score_a > 7:
+         print (str(reset_count))
+         reset_count += 1
          scores = "WN 0"
       else:
           scores = " " + str(score_a) + " 0"
+
       display.print_str(scores)
       display.write_display()
       time.sleep(0.4)
