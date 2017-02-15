@@ -4,6 +4,7 @@ import time
 from Adafruit_LED_Backpack import AlphaNum4
 
 IR_DETECT = 8
+RESET_BUTTON = 36
 
 def handle_ctrl_c(signal, frame):
     clear_score()
@@ -22,6 +23,7 @@ display = AlphaNum4.AlphaNum4()
 display.begin()
 setup_LEDs()
 
+GPIO.setup(RESET_BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 display.print_str(" 0 0")
 display.write_display()
 
@@ -33,6 +35,9 @@ signal.signal(signal.SIGINT, handle_ctrl_c)
 reset_count = 0
 scores = " 0 0"
 while (1):
+    if GPIO.input(RESET_BUTTON):
+        print("debounce and reset game")
+
     if GPIO.input(IR_DETECT):
 #      print("HIGH")
        b = 0;
