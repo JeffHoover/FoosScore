@@ -1,4 +1,4 @@
-#FoosScore Notes:
+# FoosScore Notes:
 
 Looking down in the return mechanism from goal (bottom left) to divider (top right).  
 https://drive.google.com/open?id=0B_L_-4oFZoGKWkIxRDVIUFJCWGc
@@ -59,13 +59,18 @@ https://drive.google.com/file/d/0B3vuNKvd_BySaktwbWRyZkZYSmw2enZpM1R5UHZaaTJGTUJ
 I have some removable adhesive putty that I’m going to try to use to stick parts onto the inside of the table:   
 https://www.amazon.com/Blue-Reusable-Adhesive-Putty-1-Ounce/dp/B005LRTUQ2 
 
-Possible Extensions of the Project:
+## Possible Extensions of the Project:
 - Get 2 photocells / photoresistors detecting a ball
 - Get photocells / resistors (non-destructively) installed in the table.
 - Route display wires ( through goal or ball return) onto table rim.
 - Build another display, but with right-angle pins for ease of mounting
 - Amazon Alexa integration
 - Raspberry Pi camera inside table to show workings
+
+## Alexa Tutorials
+- https://medium.com/@jjbskir/unit-testing-an-amazon-alexa-skill-with-node-js-and-jasmine-98982544471f
+- https://bespoken.tools/blog/2016/10/10/unit-testing-alexa-skills
+- https://www.bignerdranch.com/blog/developing-alexa-skills-locally-with-nodejs-setting-up-your-local-environment/
 
 
 
