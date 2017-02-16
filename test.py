@@ -1,4 +1,4 @@
-import sys, signal
+import sys, signal, os
 import RPi.GPIO as GPIO
 import time
 from Adafruit_LED_Backpack import AlphaNum4
@@ -50,8 +50,12 @@ while (1):
           
       if score_a > 7:
          scores = "WN 0"
+         os.system("aplay win1.wav")
       else:
           scores = " " + str(score_a) + " 0"
+#          display.print_str(scores)
+#          display.write_display()
+          os.system("aplay goal1.wav") # This is *synchronous* and slows things down too much
 
       display.print_str(scores)
       display.write_display()
