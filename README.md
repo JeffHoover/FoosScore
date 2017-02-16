@@ -66,7 +66,7 @@ https://www.amazon.com/Blue-Reusable-Adhesive-Putty-1-Ounce/dp/B005LRTUQ2
 To make a machine recording of speech into a wav, do this:
 flite -t "aaa goal, team 2" -o goal2.wav  
 Then in the code, shell out like this:  
-os.system("aplay win1.wav")  # this plays asynchronous, which slows things down
+os.system("aplay win1.wav")  # this plays synchronously, which slows things down
 Need to find a library to play a asynchronous sound  
 
 ## Possible Extensions of the Project:
