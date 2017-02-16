@@ -1,4 +1,5 @@
-import sys, signal, os
+import sys, signal
+import os, subprocess
 import RPi.GPIO as GPIO
 import time
 from Adafruit_LED_Backpack import AlphaNum4
@@ -55,7 +56,8 @@ while (1):
           scores = " " + str(score_a) + " 0"
 #          display.print_str(scores)
 #          display.write_display()
-          os.system("aplay goal1.wav") # This is *synchronous* and slows things down too much
+#          os.system("aplay goal1.wav") # This is *synchronous* and slows things down too much
+          subprocess.Popen(["aplay", "goal1.wav"])
 
       display.print_str(scores)
       display.write_display()
