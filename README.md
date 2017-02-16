@@ -69,6 +69,7 @@ Then in the code, shell out like this:
 os.system("aplay win1.wav")  # this plays synchronously, which slows things down
 Need to find a library to play a asynchronous sound  
 https://learn.adafruit.com/speech-synthesis-on-the-raspberry-pi/fun-applications
+http://raspberrypi.stackexchange.com/questions/7088/playing-audio-files-with-python
 
 
 ## Possible Extensions of the Project:
