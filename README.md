@@ -68,6 +68,8 @@ flite -t "aaa goal, team 2" -o goal2.wav
 Then in the code, shell out like this:  
 os.system("aplay win1.wav")  # this plays synchronously, which slows things down
 Need to find a library to play a asynchronous sound  
+https://learn.adafruit.com/speech-synthesis-on-the-raspberry-pi/fun-applications
+
 
 ## Possible Extensions of the Project:
 - Get 2 photocells / photoresistors detecting a ball
