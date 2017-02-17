@@ -67,12 +67,10 @@ while (1):
        winner = 2
     else:
        if score_a > SCORE_TO_WIN:
-          scores = str(score_a) +" WN"
           scores = "WN " + str(score_b)
           winner = 1
 
-    print(scores)
     display.print_str(scores)
     display.write_display()
-    time.sleep(0.4)
+    time.sleep(1.4)
 
