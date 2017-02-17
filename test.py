@@ -6,6 +6,8 @@ from Adafruit_LED_Backpack import AlphaNum4
 
 RESET_BUTTON = 36
 BALL1 = 37
+BALL2 = 15
+SCORE_TO_WIN = 7
 
 score_a = 0
 score_b = 0
@@ -22,6 +24,7 @@ def setup_LEDs():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setwarnings(False)
     GPIO.setup(BALL1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.setup(BALL2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 def reset_game():
     global score_a
@@ -29,7 +32,7 @@ def reset_game():
     score_a = 0
     score_b = 0
     write_score(" 0 0")
-    time.sleep(0.4)
+    time.sleep(0.8)
 
 
 # BEGIN MAIN
@@ -49,15 +52,22 @@ while (1):
 
     if GPIO.input(BALL1):
       score_a += 1
+      print ("A")
+    else:
+       if GPIO.input(BALL2):
+         score_b += 1
+         print ("B")
           
-      if score_a > 7:
-         scores = "WN 0"
-         os.system("aplay win1.wav")
-      else:
-          scores = " " + str(score_a) + " 0"
-          subprocess.Popen(["aplay", "goal1.wav"])
+    scores = " " + str(score_a) + " " + str(score_b)
 
-      display.print_str(scores)
-      display.write_display()
-      time.sleep(0.4)
+    if score_b > SCORE_TO_WIN:
+       scores = "WN " + str(score_b)
+    else:
+       if score_a > SCORE_TO_WIN:
+          scores = str(score_a) +" WN"
+
+    print(scores)
+    display.print_str(scores)
+    display.write_display()
+    time.sleep(0.4)
 
