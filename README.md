@@ -62,6 +62,16 @@ https://drive.google.com/file/d/0B3vuNKvd_BySaktwbWRyZkZYSmw2enZpM1R5UHZaaTJGTUJ
 I have some removable adhesive putty that I’m going to try to use to stick parts onto the inside of the table:   
 https://www.amazon.com/Blue-Reusable-Adhesive-Putty-1-Ounce/dp/B005LRTUQ2 
 
+## Working on making the score machine talk  
+To make a machine recording of speech into a wav, do this:
+flite -t "aaa goal, team 2" -o goal2.wav  
+Then in the code, shell out like this:  
+os.system("aplay win1.wav")  # this plays synchronously, which slows things down
+Need to find a library to play a asynchronous sound  
+https://learn.adafruit.com/speech-synthesis-on-the-raspberry-pi/fun-applications
+http://raspberrypi.stackexchange.com/questions/7088/playing-audio-files-with-python
+
+
 ## Possible Extensions of the Project:
 - Get 2 photocells / photoresistors detecting a ball
 - Get photocells / resistors (non-destructively) installed in the table.
@@ -69,6 +79,9 @@ https://www.amazon.com/Blue-Reusable-Adhesive-Putty-1-Ounce/dp/B005LRTUQ2
 - Build another display, but with right-angle pins for ease of mounting
 - Amazon Alexa integration
 - Raspberry Pi camera inside table to show workings
+
+Don't boot into GUI?  
+What's the cmd line command to boot ui?  
 
 ## Alexa Tutorials
 - https://medium.com/@jjbskir/unit-testing-an-amazon-alexa-skill-with-node-js-and-jasmine-98982544471f
