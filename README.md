@@ -66,10 +66,16 @@ https://www.amazon.com/Blue-Reusable-Adhesive-Putty-1-Ounce/dp/B005LRTUQ2
 To make a machine recording of speech into a wav, do this:
 flite -t "aaa goal, team 2" -o goal2.wav  
 Then in the code, shell out like this:  
-os.system("aplay win1.wav")  # this plays synchronously, which slows things down
-Need to find a library to play a asynchronous sound  
-https://learn.adafruit.com/speech-synthesis-on-the-raspberry-pi/fun-applications
-http://raspberrypi.stackexchange.com/questions/7088/playing-audio-files-with-python
+os.system("aplay win1.wav")  # this plays synchronously, which slows things down  
+Maybe I can find a library to play a asynchronous sound  
+In the mean time, I can get asynchrony like this:  
+subprocess.Popen(["aplay", "goal1.wav"])  
+https://learn.adafruit.com/speech-synthesis-on-the-raspberry-pi/fun-applications  
+http://raspberrypi.stackexchange.com/questions/7088/playing-audio-files-with-python  
+If the Pi is connected by HDMI to a monitor, sound will play out of it, unless  
+the Pi has something like this:  
+https://www.amazon.com/gp/product/B00NLO9JB8/ref=oh_aui_detailpage_o01_s01  
+plugged into the headphone jack.
 
 
 ## Possible Extensions of the Project:
@@ -79,6 +85,7 @@ http://raspberrypi.stackexchange.com/questions/7088/playing-audio-files-with-pyt
 - Build another display, but with right-angle pins for ease of mounting
 - Amazon Alexa integration
 - Raspberry Pi camera inside table to show workings
+- Buy, assemble, integrate a LCD display like this: https://www.amazon.com/ADAFRUIT-INDUSTRIES-WHITE-KEYPAD-RASPBERRY/dp/B00DK2A1KE  
 
 Don't boot into GUI?  
 What's the cmd line command to boot ui?  
