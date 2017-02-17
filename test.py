@@ -63,11 +63,12 @@ while (1):
     scores = " " + str(score_a) + " " + str(score_b)
 
     if score_b > SCORE_TO_WIN:
-       scores = "WN " + str(score_b)
+       scores = str(score_a) +" WN"
        winner = 2
     else:
        if score_a > SCORE_TO_WIN:
           scores = str(score_a) +" WN"
+          scores = "WN " + str(score_b)
           winner = 1
 
     print(scores)
