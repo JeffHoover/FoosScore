@@ -85,6 +85,7 @@ plugged into the headphone jack.
 - Build another display, but with right-angle pins for ease of mounting
 - Amazon Alexa integration
 - Raspberry Pi camera inside table to show workings
+- Buy, assemble, integrate a LCD display like this: https://www.amazon.com/ADAFRUIT-INDUSTRIES-WHITE-KEYPAD-RASPBERRY/dp/B00DK2A1KE  
 
 Don't boot into GUI?  
 What's the cmd line command to boot ui?  
