@@ -11,6 +11,7 @@ SCORE_TO_WIN = 7
 
 score_a = 0
 score_b = 0
+winner = 0
 
 def handle_ctrl_c(signal, frame):
     write_score("    ")
@@ -46,25 +47,28 @@ GPIO.setup(RESET_BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 reset_game()
 
+
 while (1):
     if GPIO.input(RESET_BUTTON):
         reset_game()
+        winner = 0
 
-    if GPIO.input(BALL1):
-      score_a += 1
-      print ("A")
-    else:
-       if GPIO.input(BALL2):
-         score_b += 1
-         print ("B")
+    if winner == 0:
+       if GPIO.input(BALL1):
+         score_a += 1
+       else:
+          if GPIO.input(BALL2):
+            score_b += 1
           
     scores = " " + str(score_a) + " " + str(score_b)
 
     if score_b > SCORE_TO_WIN:
        scores = "WN " + str(score_b)
+       winner = 2
     else:
        if score_a > SCORE_TO_WIN:
           scores = str(score_a) +" WN"
+          winner = 1
 
     print(scores)
     display.print_str(scores)
