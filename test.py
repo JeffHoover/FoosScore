@@ -4,8 +4,9 @@ import RPi.GPIO as GPIO
 import time
 from Adafruit_LED_Backpack import AlphaNum4
 
-IR_DETECT = 8
 RESET_BUTTON = 36
+BALL1 = 37
+
 score_a = 0
 score_b = 0
 
@@ -20,7 +21,7 @@ def write_score(str):
 def setup_LEDs():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setwarnings(False)
-    GPIO.setup(IR_DETECT, GPIO.IN)
+    GPIO.setup(BALL1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 def reset_game():
     global score_a
@@ -46,7 +47,7 @@ while (1):
     if GPIO.input(RESET_BUTTON):
         reset_game()
 
-    if not GPIO.input(IR_DETECT):
+    if GPIO.input(BALL1):
       score_a += 1
           
       if score_a > 7:
@@ -54,9 +55,6 @@ while (1):
          os.system("aplay win1.wav")
       else:
           scores = " " + str(score_a) + " 0"
-#          display.print_str(scores)
-#          display.write_display()
-#          os.system("aplay goal1.wav") # This is *synchronous* and slows things down too much
           subprocess.Popen(["aplay", "goal1.wav"])
 
       display.print_str(scores)
